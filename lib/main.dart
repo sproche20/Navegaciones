@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:navegaciones/databases/DatabaseHelper.dart';
 import 'package:navegaciones/menu/menu.dart';
 
 import 'rutas.dart';
 
-void main() => runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DatabaseHelper.instance.init();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

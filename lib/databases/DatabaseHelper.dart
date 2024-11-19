@@ -1,10 +1,10 @@
 import 'package:sqflite/sqflite.dart';
 
-class Databasehelper {
-  static Databasehelper? _databasehelper;
-  Databasehelper.internal();
-  static Databasehelper get instance =>
-      _databasehelper ??= Databasehelper.internal();
+class DatabaseHelper {
+  static DatabaseHelper? _databasehelper;
+  DatabaseHelper.internal();
+  static DatabaseHelper get instance =>
+      _databasehelper ??= DatabaseHelper.internal();
   Database? _db;
   Database get db => _db!;
   Future<void> init() async {
@@ -12,15 +12,25 @@ class Databasehelper {
     _db = await openDatabase(
       'database.db',
       version: 1,
-      onCreate: (db, version) {
+      onCreate: (db, version) async {
         db.execute('''
         create table programas
         (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
-          nombrePrograma varchar(255),
+          urlImage varchar(255),
+          nombrePrograma varchar(255) UNIQUE,
           precio varchar(100),
         ); 
     ''');
+        try {
+          await db.insert('programas', {
+            'urlImage': 'assets/programas/office.png',
+            'nombrePograma': 'Office 365',
+            'precio': '60'
+          });
+        } catch (e) {
+          print('Datos duplicados: ${e.toString()}');
+        }
       },
     );
   }

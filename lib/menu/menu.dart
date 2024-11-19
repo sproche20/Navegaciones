@@ -1,6 +1,8 @@
+import 'package:navegaciones/pages/programas.dart';
 import 'package:navegaciones/rutas.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
+
 class Menu extends StatefulWidget {
   const Menu({super.key});
 
@@ -18,6 +20,7 @@ class _MenuState extends State<Menu> {
     const Inicio(),
     const nosotros(),
     const Contactos(),
+    const Programas()
     //const registro(),
   ];
   @override

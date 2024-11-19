@@ -14,7 +14,8 @@ class _InicioState extends State<Inicio> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: const Color.fromARGB(255, 255, 255, 255), // Color blanco para el body
+        color: const Color.fromARGB(
+            255, 255, 255, 255), // Color blanco para el body
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -59,7 +60,8 @@ class _InicioState extends State<Inicio> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        _disenoCard(2, Icons.build, 'Reparación de\nComponentes'),
+                        _disenoCard(
+                            2, Icons.build, 'Reparación de\nComponentes'),
                         _disenoCard(3, Icons.tv, 'Instalación de\nProgramas'),
                       ],
                     ),
@@ -68,8 +70,13 @@ class _InicioState extends State<Inicio> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        _disenoCard(4, Icons.report_problem, 'Diagnóstico de Fallas'),
-                        _disenoCard(5, Icons.bug_report, 'Eliminación de Virus'),
+                        _disenoCard(
+                            4, Icons.report_problem, 'Diagnóstico de Fallas'),
+                        _disenoCard(
+                          5,
+                          Icons.bug_report,
+                          'Eliminación de Virus',
+                        ),
                       ],
                     ),
                   ],
@@ -82,45 +89,55 @@ class _InicioState extends State<Inicio> {
     );
   }
 
-//Creamos una funcoones para el diseño de las card 
+//Creamos una funcoones para el diseño de las card
   Widget _disenoCard(int index, IconData icon, String descrpcion) {
-  bool isSelected = selectedIndex == index; // Verifica si esta tarjeta está seleccionada
-  return GestureDetector(//Detector de gestos
-    onTap: () {//Metodo que se ejecuta cuando se toca la tarjeta
-      setState(() {
-        selectedIndex = isSelected ? null : index; // Cambia la selección
-      });
-    },
-    child: SizedBox(
-      width: 180, // Establece el ancho de la tarjeta
-      child: Card(
-        color: Colors.white, // Color de fondo blanco
-        elevation: 4,
-        shape: RoundedRectangleBorder(//definir la forma de la tarjeta
-          borderRadius: BorderRadius.circular(10.0),
-          side: BorderSide(
-            //Este permite cambiar el color de la tarjeta si esta o no seleccionada
-            color: isSelected ? Colors.blue : const Color(0xFF00e2d4), // Color del borde
-            width: 3,
+    bool isSelected =
+        selectedIndex == index; // Verifica si esta tarjeta está seleccionada
+    return GestureDetector(
+      //Detector de gestos
+      onTap: () {
+        //Metodo que se ejecuta cuando se toca la tarjeta
+        setState(() {
+          selectedIndex = isSelected ? null : index; // Cambia la selección
+        });
+      },
+      child: SizedBox(
+        width: 180, // Establece el ancho de la tarjeta
+        child: Card(
+          color: Colors.white, // Color de fondo blanco
+          elevation: 4,
+          shape: RoundedRectangleBorder(
+            //definir la forma de la tarjeta
+            borderRadius: BorderRadius.circular(10.0),
+            side: BorderSide(
+              //Este permite cambiar el color de la tarjeta si esta o no seleccionada
+              color: isSelected
+                  ? Colors.blue
+                  : const Color(0xFF00e2d4), // Color del borde
+              width: 3,
+            ),
           ),
-        ),
-        child: Padding(//Allande un espacio al contenido dentro de la tarjeta
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, // Centra el contenido verticalmente
-            children: [
-              Icon(
-                icon,
-                size: 60,
-                color: isSelected ? Colors.blue : const Color(0xFF00e2d4), // Color del ícono
-              ),
-              const SizedBox(height: 10),
-              Text(descrpcion, textAlign: TextAlign.center),
-            ],
+          child: Padding(
+            //Allande un espacio al contenido dentro de la tarjeta
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment:
+                  MainAxisAlignment.center, // Centra el contenido verticalmente
+              children: [
+                Icon(
+                  icon,
+                  size: 60,
+                  color: isSelected
+                      ? Colors.blue
+                      : const Color(0xFF00e2d4), // Color del ícono
+                ),
+                const SizedBox(height: 10),
+                Text(descrpcion, textAlign: TextAlign.center),
+              ],
+            ),
           ),
         ),
       ),
-    ),
-  );
-}
+    );
+  }
 }
