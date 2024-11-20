@@ -7,6 +7,7 @@ import 'rutas.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DatabaseHelper.instance.init();
+  await DatabaseHelper.instance.showTableData();
   runApp(MyApp());
 }
 

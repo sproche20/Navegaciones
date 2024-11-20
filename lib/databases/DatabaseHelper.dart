@@ -14,24 +14,31 @@ class DatabaseHelper {
       version: 1,
       onCreate: (db, version) async {
         db.execute('''
-        create table programas
+        CREATE TABLE servicios
         (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           urlImage varchar(255),
-          nombrePrograma varchar(255) UNIQUE,
-          precio varchar(100),
-        ); 
+          nombrePrograma varchar(255),
+          categoria varchar(255),
+          precio varchar(100)
+        ) 
     ''');
-        try {
-          await db.insert('programas', {
-            'urlImage': 'assets/programas/office.png',
-            'nombrePograma': 'Office 365',
-            'precio': '60'
-          });
-        } catch (e) {
-          print('Datos duplicados: ${e.toString()}');
-        }
+        await db.insert('servicios', {
+          'urlImage': 'assets/programas/office.png',
+          'nombrePograma': 'myors',
+          'categoria': 'programas',
+          'precio': '80'
+        });
       },
     );
+  }
+
+  Future<void> showTableData() async {
+    final db = await instance.db;
+    final List<Map<String, dynamic>> maps = await db.query('servicios');
+    for (var row in maps) {
+      print(
+          'ID:${row['id']},urlImage:${row['urlImage']},nombrePograma:${row['nombrePograma']},categoria:${row['categoria']},precio:${row['precio']}');
+    }
   }
 }
