@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navegaciones/databases/DatabaseHelper.dart';
 import 'package:navegaciones/menu/menu.dart';
+import 'package:navegaciones/pages/addServices.dart';
 
 import 'rutas.dart';
 
@@ -20,8 +21,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       home: const Menu(),
-      //initialRoute: '/inicio',
+      //initialRoute: '/add',
       routes: {
+        '/add': (context) => Addservices(),
         '/inicio': (context) => Inicio(),
         '/nosotros': (context) => nosotros(),
         '/contactos': (context) => Contactos(),
