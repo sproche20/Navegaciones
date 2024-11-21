@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navegaciones/pages/programas.dart';
 
 class Inicio extends StatefulWidget {
   const Inicio({super.key});
@@ -60,7 +61,7 @@ class _InicioState extends State<Inicio> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        _disenoCard(
+                        _disenoCard1(
                             2, Icons.build, 'Reparación de\nComponentes'),
                         _disenoCard(3, Icons.tv, 'Instalación de\nProgramas'),
                       ],
@@ -96,6 +97,65 @@ class _InicioState extends State<Inicio> {
     return GestureDetector(
       //Detector de gestos
       onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Programas(categoria: 'programas')));
+        //Metodo que se ejecuta cuando se toca la tarjeta
+        setState(() {
+          selectedIndex = isSelected ? null : index; // Cambia la selección
+        });
+      },
+      child: SizedBox(
+        width: 180, // Establece el ancho de la tarjeta
+        child: Card(
+          color: Colors.white, // Color de fondo blanco
+          elevation: 4,
+          shape: RoundedRectangleBorder(
+            //definir la forma de la tarjeta
+            borderRadius: BorderRadius.circular(10.0),
+            side: BorderSide(
+              //Este permite cambiar el color de la tarjeta si esta o no seleccionada
+              color: isSelected
+                  ? Colors.blue
+                  : const Color(0xFF00e2d4), // Color del borde
+              width: 3,
+            ),
+          ),
+          child: Padding(
+            //Allande un espacio al contenido dentro de la tarjeta
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment:
+                  MainAxisAlignment.center, // Centra el contenido verticalmente
+              children: [
+                Icon(
+                  icon,
+                  size: 60,
+                  color: isSelected
+                      ? Colors.blue
+                      : const Color(0xFF00e2d4), // Color del ícono
+                ),
+                const SizedBox(height: 10),
+                Text(descrpcion, textAlign: TextAlign.center),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _disenoCard1(int index, IconData icon, String descrpcion) {
+    bool isSelected =
+        selectedIndex == index; // Verifica si esta tarjeta está seleccionada
+    return GestureDetector(
+      //Detector de gestos
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Programas(categoria: 'componentes')));
         //Metodo que se ejecuta cuando se toca la tarjeta
         setState(() {
           selectedIndex = isSelected ? null : index; // Cambia la selección

@@ -12,7 +12,7 @@ class DatabaseDao {
   Future<int> insert(Appsmodels servicios) async {
     return await database.insert('servicios', {
       'urlImage': servicios.urlImage,
-      'nombrePograma': servicios.nombrePrograma,
+      'nombrePrograma': servicios.nombrePrograma,
       'categoria': servicios.categoria,
       'precio': servicios.precio,
     });
@@ -26,5 +26,14 @@ class DatabaseDao {
   Future<void> delete(Appsmodels servicios) async {
     await database
         .delete('servicios', where: 'id=?', whereArgs: [servicios.id]);
+  }
+
+  Future<List<Appsmodels>> readByCategoria(String categoria) async {
+    final data = await database.query(
+      'servicios',
+      where: 'categoria = ?',
+      whereArgs: [categoria],
+    );
+    return data.map((e) => Appsmodels.fromMap(e)).toList();
   }
 }

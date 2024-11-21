@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:navegaciones/databases/databaseDao.dart';
+import 'package:navegaciones/extensions/string_extensions.dart';
 import 'package:navegaciones/models/appsModels.dart';
 
 class Programas extends StatefulWidget {
-  const Programas({super.key});
+  final String categoria;
+
+  const Programas({Key? key, required this.categoria}) : super(key: key);
 
   @override
   State<Programas> createState() => _ProgramasState();
@@ -12,6 +15,7 @@ class Programas extends StatefulWidget {
 class _ProgramasState extends State<Programas> {
   List<Appsmodels> apps = [];
   final dao = DatabaseDao();
+
   @override
   void initState() {
     super.initState();
@@ -19,7 +23,7 @@ class _ProgramasState extends State<Programas> {
   }
 
   Future<void> _loadApps() async {
-    final listApps = await dao.readAll();
+    final listApps = await dao.readByCategoria(widget.categoria);
     setState(() {
       apps = listApps;
     });
@@ -28,7 +32,10 @@ class _ProgramasState extends State<Programas> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(widget.categoria
+            .capitalize()), // Asumiendo que tienes un método para capitalizar strings
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -48,7 +55,7 @@ class _ProgramasState extends State<Programas> {
                     tileColor: const Color.fromARGB(172, 46, 46, 46),
                     textColor: Colors.white,
                     title: Text(aplicacion.nombrePrograma),
-                    subtitle: Text('${aplicacion.precio}' + ' Dolares'),
+                    subtitle: Text('${aplicacion.precio} Dolares'),
                   );
                 },
               ),
