@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class Contactos extends StatelessWidget {
-  const Contactos({super.key});
+class Contactos1 extends StatelessWidget {
+  const Contactos1({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,7 @@ class ContactosForm extends StatefulWidget {
 }
 
 class _ContactosFormState extends State<ContactosForm> {
+  bool isMoved = false;
   final _formKey = GlobalKey<FormState>(); // Clave para el formulario
   final TextEditingController _nombreController = TextEditingController();
   final TextEditingController _opinionController = TextEditingController();
@@ -54,6 +56,59 @@ class _ContactosFormState extends State<ContactosForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(60),
+        child: Column(
+          children: [
+            AppBar(
+              backgroundColor: Colors.white,
+              elevation: 0,
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 320, // ancho
+                    height: 235, // alto
+                    child: Stack(
+                      children: [
+                        // permite realizar el efecto de movimiento de arriba hacia abajo.
+                        AnimatedPositioned(
+                          duration: Duration(seconds: 2),
+                          left: isMoved ? 0 : 100,
+                          top: 100,
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                isMoved =
+                                    !isMoved; // Cambia el estado al presionar el texto
+                              });
+                            },
+                            child: Text(
+                              'SOFTECH',
+                              style: GoogleFonts.audiowide(
+                                fontSize: 35,
+                                fontWeight: FontWeight.bold,
+                                // Fuente de estilo tecnológico
+                                letterSpacing:
+                                    3, // Espaciado entre letras para dar un toque más moderno
+                                color: Colors.blue,
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              height: 3, // Grosor del borde
+              color: Colors.blue, // Color azul del borde
+            ),
+          ],
+        ),
+      ),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(

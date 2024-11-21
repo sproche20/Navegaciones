@@ -32,7 +32,7 @@ class DatabaseHelper {
     final List<Map<String, dynamic>> maps = await db.query('servicios');
     for (var row in maps) {
       print(
-          'ID:${row['id']},urlImage:${row['urlImage']},nombrePograma:${row['nombrePograma']},categoria:${row['categoria']},precio:${row['precio']}');
+          'ID:${row['id']},urlImage:${row['urlImage']},nombrePrograma:${row['nombrePrograma']},categoria:${row['categoria']},precio:${row['precio']}');
     }
   }
 }
