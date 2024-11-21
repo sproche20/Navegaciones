@@ -28,6 +28,8 @@ class _MenuState extends State<Menu> {
   ];
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       /**appbar----------------------------------------------------------- */
       appBar: PreferredSize(
@@ -38,17 +40,18 @@ class _MenuState extends State<Menu> {
               backgroundColor: Colors.white,
               elevation: 0,
               title: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   SizedBox(
-                    width: 320, //ancho
+                    width:
+                        screenWidth * (0.78), // Ajusta el ancho dinámicamente
                     height: 235, //alto
                     child: Stack(
                       children: [
                         //permite realizar el efecto de movimiento de arriba hacia abajo.
                         AnimatedPositioned(
                           duration: Duration(seconds: 2),
-                          left: isMoved ? 0 : 100,
+                          left: isMoved ? 1 : 100,
                           top: 100,
                           child: GestureDetector(
                             onTap: () {
@@ -60,7 +63,7 @@ class _MenuState extends State<Menu> {
                             child: Text(
                               'SOFTECH',
                               style: GoogleFonts.audiowide(
-                                fontSize: 35,
+                                fontSize: screenWidth * 0.08,
                                 fontWeight: FontWeight.bold,
                                 // Fuente de estilo tecnológico
                                 letterSpacing:
@@ -100,15 +103,18 @@ class _MenuState extends State<Menu> {
                   ),
                 ),
                 child: Container(
-                  height: 150, // Cambia la altura del DrawerHeader
+                  height:
+                      screenHeight * 1.0, // Cambia la altura del DrawerHeader
                   width:
                       double.infinity, // O un valor específico si lo prefieres
                   child: Column(
                     children: [
                       /**contenedor imagen---------------------- --------------------------------------------------*/
                       Container(
-                        height: 105,
-                        width: 170,
+                        height: screenHeight *
+                            0.12, // Ajusta la altura de la imagen
+                        width:
+                            screenWidth * 0.5, // Ajusta el ancho de la imagen
                         child: const AnimationControllers(
                           imagePath: 'assets/logo.png',
                           duration: Duration(seconds: 3),
@@ -139,8 +145,14 @@ class _MenuState extends State<Menu> {
                 )),
             /**menus opciones parte de abajo------------------------------------------------------------------ */
             ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text('Inicio'),
+              leading: Icon(
+                Icons.home,
+                size: screenWidth * 0.08,
+              ),
+              title: Text(
+                'Inicio',
+                style: TextStyle(fontSize: screenWidth * 0.05),
+              ),
               onTap: () {
                 _selectPage(0);
                 Navigator.pop(context);
@@ -148,7 +160,10 @@ class _MenuState extends State<Menu> {
             ),
             ListTile(
               leading: const Icon(Icons.people_sharp),
-              title: const Text('Nosotros'),
+              title: Text(
+                'Nosotros',
+                style: TextStyle(fontSize: screenWidth * 0.05),
+              ),
               onTap: () {
                 _selectPage(1);
                 Navigator.pop(context);
@@ -156,7 +171,10 @@ class _MenuState extends State<Menu> {
             ),
             ListTile(
               leading: const Icon(Icons.contacts),
-              title: const Text('Contactanos'),
+              title: Text(
+                'Contactanos',
+                style: TextStyle(fontSize: screenWidth * 0.05),
+              ),
               onTap: () {
                 _selectPage(2);
                 Navigator.pop(context);
@@ -164,15 +182,21 @@ class _MenuState extends State<Menu> {
             ),
             ListTile(
               leading: const Icon(Icons.person_add),
-              title: const Text('Registro'),
+              title: Text(
+                'Registro',
+                style: TextStyle(fontSize: screenWidth * 0.05),
+              ),
               onTap: () {
                 //_selectPage(3);
                 Navigator.pushNamed(context, '/registro');
               },
             ),
-             ListTile(
+            ListTile(
               leading: const Icon(Icons.login),
-              title: const Text('Login'),
+              title: Text(
+                'Login',
+                style: TextStyle(fontSize: screenWidth * 0.05),
+              ),
               onTap: () {
                 _selectPage(3);
                 Navigator.pop(context);
