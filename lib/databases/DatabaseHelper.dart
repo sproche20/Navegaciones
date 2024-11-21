@@ -23,12 +23,6 @@ class DatabaseHelper {
           precio varchar(100)
         ) 
     ''');
-        await db.insert('servicios', {
-          'urlImage': 'assets/programas/office.png',
-          'nombrePograma': 'myors',
-          'categoria': 'programas',
-          'precio': '80'
-        });
       },
     );
   }
