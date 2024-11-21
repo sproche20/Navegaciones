@@ -1,3 +1,4 @@
+import 'package:navegaciones/pages/login.dart';
 import 'package:navegaciones/pages/programas.dart';
 import 'package:navegaciones/rutas.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,11 +17,13 @@ class _MenuState extends State<Menu> {
   bool _isVisible = true;
   /**pages---------------------------------- */
   int _selectIndex = 0;
+
   final List<Widget> _pages = [
     const Inicio(),
     const nosotros(),
     const Contactos(),
-    const Programas()
+    //const Programas(),
+    LoginPage()
     //const registro(),
   ];
   @override
@@ -165,6 +168,14 @@ class _MenuState extends State<Menu> {
               onTap: () {
                 //_selectPage(3);
                 Navigator.pushNamed(context, '/registro');
+              },
+            ),
+             ListTile(
+              leading: const Icon(Icons.contacts),
+              title: const Text('Login'),
+              onTap: () {
+                _selectPage(3);
+                Navigator.pop(context);
               },
             ),
           ],

@@ -1,7 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:navegaciones/databases/Login_Firebase.dart';
+import 'package:navegaciones/pages/programas.dart';
 import 'package:navegaciones/rutas.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 
 class registro extends StatefulWidget {
   const registro({super.key});
@@ -16,6 +19,7 @@ class _RegistroState extends State<registro> {
   bool isColorChanged = false;
   Timer? _timer;
 
+  final Login _loginFirebase=Login();
   // Controladores de texto para los campos de entrada
   final TextEditingController _nombreController = TextEditingController();
   final TextEditingController _claveController = TextEditingController();
@@ -51,8 +55,13 @@ class _RegistroState extends State<registro> {
     super.dispose();
   }
 
-  void _registrarUsuario() {
+  void _registrarUsuario () async {
+                 
     if (_formKey.currentState?.validate() ?? false) {
+       await _loginFirebase.registrarUsuario(
+                  _emailController.text,
+                  _claveController.text,
+                  );
       // Mostrar un diálogo de confirmación
       showDialog(
         context: context,
@@ -67,7 +76,12 @@ class _RegistroState extends State<registro> {
                 _claveController.clear();
                 _emailController.clear();
                 _celularController.clear();
-                Navigator.of(context).pop();
+                Navigator.of(context).pop(); // Cierra el diálogo
+               Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Inicio()),
+              );
+               
               },
               child: const Text('Cerrar'),
             ),
@@ -203,7 +217,7 @@ class _RegistroState extends State<registro> {
                           size: 50,
                           color: Color.fromARGB(255, 255, 255, 255),
                         ),
-                        onPressed: _registrarUsuario,
+                        onPressed:_registrarUsuario,
                         style: TextButton.styleFrom(
                           foregroundColor: const Color.fromARGB(255, 255, 255, 255),
                           shape: const StadiumBorder(

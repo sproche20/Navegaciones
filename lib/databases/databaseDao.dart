@@ -12,8 +12,9 @@ class DatabaseDao {
   Future<int> insert(Appsmodels servicios) async {
     return await database.insert('servicios', {
       'urlImage': servicios.urlImage,
-      'nombre': servicios.nombrePrograma,
-      'precios': servicios.precio,
+      'nombrePograma': servicios.nombrePrograma,
+      'categoria': servicios.categoria,
+      'precio': servicios.precio,
     });
   }
 

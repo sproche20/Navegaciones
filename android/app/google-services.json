@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "325888760595",
+    "project_id": "softech-d42c3",
+    "storage_bucket": "softech-d42c3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325888760595:android:8903d570f08e34fa70d8e6",
+        "android_client_info": {
+          "package_name": "com.example.navegaciones"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2p-MWqdzt5RBOY_Ej6OxzBKJXRG1FP1Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
