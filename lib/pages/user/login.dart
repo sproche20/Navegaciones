@@ -2,9 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:navegaciones/databases/Login_Firebase.dart';
-import 'package:navegaciones/pages/inicio.dart';
-import 'package:navegaciones/pages/servicioTecnico_Admin.dart';
-import 'package:navegaciones/pages/usuario.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -21,16 +18,15 @@ class _LoginPageState extends State<LoginPage> {
     if (_formKey.currentState?.validate() ?? false) {
       // Esperar el login
       await _loginFirebase.loginUsuario(
-         _emailController.text,
+        _emailController.text,
         _claveController.text,
-         context,
+        context,
       );
       _emailController.clear();
       _claveController.clear();
     }
   }
-      // Mostrar un diálogo de confirmación
-      
+  // Mostrar un diálogo de confirmación
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +34,8 @@ class _LoginPageState extends State<LoginPage> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: SingleChildScrollView( // Asegura que la Card sea desplazable si el contenido es largo
+          child: SingleChildScrollView(
+            // Asegura que la Card sea desplazable si el contenido es largo
             child: Card(
               elevation: 5,
               shape: RoundedRectangleBorder(
@@ -47,15 +44,18 @@ class _LoginPageState extends State<LoginPage> {
               color: Colors.white,
               child: Container(
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.blue, width: 3), // Borde azul de 3px
+                  border: Border.all(
+                      color: Colors.blue, width: 3), // Borde azul de 3px
                   borderRadius: BorderRadius.circular(15),
                 ),
                 padding: const EdgeInsets.all(20.0),
-                width: double.infinity, // Esto hace que el ancho de la Card ocupe todo el espacio disponible
+                width: double
+                    .infinity, // Esto hace que el ancho de la Card ocupe todo el espacio disponible
                 child: Form(
                   key: _formKey,
                   child: Column(
-                    mainAxisSize: MainAxisSize.min, // Ajusta la altura según el contenido
+                    mainAxisSize:
+                        MainAxisSize.min, // Ajusta la altura según el contenido
                     children: [
                       // Imagen en la parte superior
                       Image.asset(
@@ -79,25 +79,30 @@ class _LoginPageState extends State<LoginPage> {
                         controller: _emailController,
                         decoration: InputDecoration(
                           labelText: 'Email',
-                          prefixIcon: Icon(Icons.email, color: Colors.blue), // Icono dentro del campo
+                          prefixIcon: Icon(Icons.email,
+                              color: Colors.blue), // Icono dentro del campo
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(color: Colors.blue, width: 2),
+                            borderSide:
+                                BorderSide(color: Colors.blue, width: 2),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(color: Colors.blue, width: 1),
+                            borderSide:
+                                BorderSide(color: Colors.blue, width: 1),
                           ),
-                          labelStyle: TextStyle(color: Colors.blue), // Color del label en azul
+                          labelStyle: TextStyle(
+                              color: Colors.blue), // Color del label en azul
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Por favor ingrese su correo electrónico';
                           }
-                          if (!RegExp(r"^[a-zA-Z0-9]+@[a-zAZ0-9]+\.[a-zA-Z]+").hasMatch(value)) {
+                          if (!RegExp(r"^[a-zA-Z0-9]+@[a-zAZ0-9]+\.[a-zA-Z]+")
+                              .hasMatch(value)) {
                             return 'Por favor ingrese un correo electrónico válido';
                           }
                           return null;
@@ -111,19 +116,23 @@ class _LoginPageState extends State<LoginPage> {
                         obscureText: true,
                         decoration: InputDecoration(
                           labelText: 'Contraseña',
-                          prefixIcon: Icon(Icons.lock, color: Colors.blue), // Icono dentro del campo
+                          prefixIcon: Icon(Icons.lock,
+                              color: Colors.blue), // Icono dentro del campo
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(color: Colors.blue, width: 2),
+                            borderSide:
+                                BorderSide(color: Colors.blue, width: 2),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(color: Colors.blue, width: 1),
+                            borderSide:
+                                BorderSide(color: Colors.blue, width: 1),
                           ),
-                          labelStyle: TextStyle(color: Colors.blue), // Color del label en azul
+                          labelStyle: TextStyle(
+                              color: Colors.blue), // Color del label en azul
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -147,7 +156,8 @@ class _LoginPageState extends State<LoginPage> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           backgroundColor: Colors.blue,
-                          padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 12, horizontal: 20),
                         ),
                       ),
                     ],

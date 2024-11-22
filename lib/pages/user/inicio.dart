@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navegaciones/pages/programas.dart';
+import 'package:navegaciones/pages/user/programas.dart';
 
 class Inicio extends StatefulWidget {
   const Inicio({super.key});
@@ -13,8 +13,6 @@ class _InicioState extends State<Inicio> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SingleChildScrollView(
           child: Padding(

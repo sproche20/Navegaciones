@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:navegaciones/databases/databaseDao.dart';
-import 'package:navegaciones/extensions/string_extensions.dart';
 import 'package:navegaciones/models/appsModels.dart';
 
-class Programas extends StatefulWidget {
-  final String categoria;
-
-  const Programas({Key? key, required this.categoria}) : super(key: key);
+class ProgramasAdmin extends StatefulWidget {
+  const ProgramasAdmin({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  State<Programas> createState() => _ProgramasState();
+  State<ProgramasAdmin> createState() => _ProgramasState();
 }
 
-class _ProgramasState extends State<Programas> {
+class _ProgramasState extends State<ProgramasAdmin> {
   bool isMoved = false;
   List<Appsmodels> apps = [];
   final dao = DatabaseDao();
@@ -25,7 +24,7 @@ class _ProgramasState extends State<Programas> {
   }
 
   Future<void> _loadApps() async {
-    final listApps = await dao.readByCategoria(widget.categoria);
+    final listApps = await dao.readAll();
     setState(() {
       apps = listApps;
     });
@@ -110,7 +109,7 @@ class _ProgramasState extends State<Programas> {
                   final aplicacion = apps[index];
                   return Container(
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(33, 34, 34, 34),
+                      color: const Color.fromARGB(44, 255, 255, 255),
                       border: Border.all(
                         color: Color(0xFF00e2d4), // Color del borde
                         width: 2.0, // Grosor del borde
@@ -151,7 +150,7 @@ class _ProgramasState extends State<Programas> {
                               Text(
                                 aplicacion.nombrePrograma,
                                 style: GoogleFonts.gabarito(
-                                  fontSize: 28,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                   // Fuente de estilo tecnológico
                                   letterSpacing:
@@ -171,7 +170,39 @@ class _ProgramasState extends State<Programas> {
                                 ),
                               ),
                             ],
-                          ))
+                          )),
+                          IconButton(
+                            icon: Icon(Icons.edit, color: Colors.blue),
+                            onPressed: () async {
+                              final editarCompu =
+                                  await Navigator.of(context).pushNamed(
+                                '/editar',
+                                arguments: aplicacion,
+                              ) as Appsmodels?;
+                              if (editarCompu != null) {
+                                setState(() {
+                                  apps = apps
+                                      .map((e) => e.id == aplicacion.id
+                                          ? editarCompu
+                                          : e)
+                                      .toList();
+                                });
+                              }
+                            },
+                          ),
+                          IconButton(
+                            onPressed: () async {
+                              await dao.delete(aplicacion);
+                              setState(() {
+                                apps.removeWhere(
+                                    (element) => element.id == aplicacion.id);
+                              });
+                            },
+                            icon: Icon(
+                              Icons.delete,
+                              color: Colors.red,
+                            ),
+                          ),
                         ],
                       ),
                     ),

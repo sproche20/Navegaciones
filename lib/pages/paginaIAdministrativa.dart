@@ -1,18 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navegaciones/pages/servicioTecnico_Admin.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: PaginaInicioA(),
-    );
-  }
-}
-
 class PaginaInicioA extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -33,7 +21,7 @@ class PaginaInicioA extends StatelessWidget {
           color: Colors.white, // Fondo blanco
           elevation: 5.0, // Agrega una pequeña sombra
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),//Borde a las card
+            borderRadius: BorderRadius.circular(10.0), //Borde a las card
             side: const BorderSide(color: Colors.blue, width: 2.0),
           ),
           child: Padding(
@@ -53,10 +41,11 @@ class PaginaInicioA extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                       MaterialPageRoute(builder: (context) =>  ServicioTAdmin()),
+                      MaterialPageRoute(builder: (context) => ServicioTAdmin()),
                     );
                   },
-                  icon: const Icon(Icons.add, color: Colors.white),//Coloar ell icono
+                  icon: const Icon(Icons.add,
+                      color: Colors.white), //Coloar ell icono
                   label: const Text('Insertar'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue, // Fondo azul
@@ -71,5 +60,3 @@ class PaginaInicioA extends StatelessWidget {
     );
   }
 }
-
-

@@ -2,10 +2,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:navegaciones/databases/DatabaseHelper.dart';
 import 'package:navegaciones/menu/menu.dart';
-import 'package:navegaciones/pages/contactos1.dart';
-import 'package:navegaciones/pages/login.dart';
-import 'package:navegaciones/pages/addServices.dart';
-import 'package:navegaciones/pages/programas.dart';
+import 'package:navegaciones/models/appsModels.dart';
+import 'package:navegaciones/pages/admin/editar.dart';
+import 'package:navegaciones/pages/admin/programasAdmin.dart';
+import 'package:navegaciones/pages/user/contactos1.dart';
+import 'package:navegaciones/pages/user/login.dart';
+import 'package:navegaciones/pages/admin/addServices.dart';
+import 'package:navegaciones/pages/user/programas.dart';
 import 'rutas.dart';
 
 void main() async {
@@ -27,7 +30,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       home: const Menu(),
-      //initialRoute: '/add',
+      // initialRoute: '/add',
       routes: {
         '/add': (context) => Addservices(),
         '/inicio': (context) => Inicio(),
@@ -36,9 +39,17 @@ class MyApp extends StatelessWidget {
         '/registro': (context) => registro(),
         '/login': (context) => LoginPage(),
         '/contactos1': (context) => Contactos1(),
+        '/listAdmin': (context) => ProgramasAdmin(),
         '/programas': (context) => Programas(
               categoria: '',
-            )
+            ),
+      },
+      onGenerateRoute: (setting) {
+        if (setting.name == '/editar') {
+          final apps = setting.arguments as Appsmodels;
+          return MaterialPageRoute(builder: (context) => Editar(apps: apps));
+        }
+        return null;
       },
       theme: ThemeData(
           appBarTheme: const AppBarTheme(

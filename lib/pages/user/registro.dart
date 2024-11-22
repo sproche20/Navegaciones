@@ -1,11 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:navegaciones/databases/Login_Firebase.dart';
-import 'package:navegaciones/pages/programas.dart';
-import 'package:navegaciones/pages/usuario.dart';
 import 'package:navegaciones/rutas.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 class registro extends StatefulWidget {
   const registro({super.key});
@@ -16,11 +13,11 @@ class registro extends StatefulWidget {
 
 class _RegistroState extends State<registro> {
   bool isMoved = false;
- // bool _isVisible = true;
+  // bool _isVisible = true;
   bool isColorChanged = false;
   Timer? _timer;
 
-  final Login _loginFirebase=Login();
+  final Login _loginFirebase = Login();
   // Controladores de texto para los campos de entrada
   final TextEditingController _nombreController = TextEditingController();
   final TextEditingController _claveController = TextEditingController();
@@ -56,13 +53,12 @@ class _RegistroState extends State<registro> {
     super.dispose();
   }
 
-  void _registrarUsuario () async {
-                 
+  void _registrarUsuario() async {
     if (_formKey.currentState?.validate() ?? false) {
-       await _loginFirebase.registrarUsuario(
-                  _emailController.text,
-                  _claveController.text,
-                  );
+      await _loginFirebase.registrarUsuario(
+        _emailController.text,
+        _claveController.text,
+      );
       // Mostrar un diálogo de confirmación
       showDialog(
         context: context,
@@ -78,11 +74,10 @@ class _RegistroState extends State<registro> {
                 _emailController.clear();
                 _celularController.clear();
                 Navigator.of(context).pop(); // Cierra el diálogo
-               Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const PaginaUsuario()),
-              );
-               
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Inicio()),
+                );
               },
               child: const Text('Cerrar'),
             ),
@@ -118,7 +113,8 @@ class _RegistroState extends State<registro> {
                           child: GestureDetector(
                             onTap: () {
                               setState(() {
-                                isMoved = !isMoved; // Cambia el estado al presionar el texto
+                                isMoved =
+                                    !isMoved; // Cambia el estado al presionar el texto
                               });
                             },
                             child: Text(
@@ -127,7 +123,8 @@ class _RegistroState extends State<registro> {
                                 fontSize: 35,
                                 fontWeight: FontWeight.bold,
                                 // Fuente de estilo tecnológico
-                                letterSpacing: 3, // Espaciado entre letras para dar un toque más moderno
+                                letterSpacing:
+                                    3, // Espaciado entre letras para dar un toque más moderno
                                 color: Colors.blue,
                               ),
                             ),
@@ -190,24 +187,37 @@ class _RegistroState extends State<registro> {
                           bottomRight: Radius.circular(32)),
                       color: const Color.fromARGB(255, 33, 150, 243),
                     ),
-                    duration: Duration(seconds: 1), // Duración de la animación de color
+                    duration: Duration(
+                        seconds: 1), // Duración de la animación de color
                     curve: Curves.easeInOut,
                     child: Column(
                       children: [
-                        const SizedBox( height: 10,),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         inputs.inputNombre(_nombreController),
-                        const SizedBox( height: 10,),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         inputs.inputClave(_claveController),
-                        const SizedBox( height: 10,),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         inputs.inputEmail(_emailController),
-                        const SizedBox( height: 10,),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         inputs.inputCelular(_celularController),
-                        const SizedBox( height: 10,),
+                        const SizedBox(
+                          height: 10,
+                        ),
                       ],
                     ),
                   ),
                 ),
-                const SizedBox( height: 30,),
+                const SizedBox(
+                  height: 30,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -218,12 +228,14 @@ class _RegistroState extends State<registro> {
                           size: 50,
                           color: Color.fromARGB(255, 255, 255, 255),
                         ),
-                        onPressed:_registrarUsuario,
+                        onPressed: _registrarUsuario,
                         style: TextButton.styleFrom(
-                          foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                          foregroundColor:
+                              const Color.fromARGB(255, 255, 255, 255),
                           shape: const StadiumBorder(
                             side: BorderSide(
-                              color: Color.fromARGB(255, 0, 251, 255), // Color del borde
+                              color: Color.fromARGB(
+                                  255, 0, 251, 255), // Color del borde
                               width: 3.0, // Ancho del borde
                             ),
                           ),
@@ -243,10 +255,12 @@ class _RegistroState extends State<registro> {
                           Navigator.pop(context);
                         },
                         style: TextButton.styleFrom(
-                          foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                          foregroundColor:
+                              const Color.fromARGB(255, 255, 255, 255),
                           shape: const StadiumBorder(
                             side: BorderSide(
-                              color: Color.fromARGB(255, 0, 251, 255), // Color del borde
+                              color: Color.fromARGB(
+                                  255, 0, 251, 255), // Color del borde
                               width: 3.0, // Ancho del borde
                             ),
                           ),
@@ -265,4 +279,3 @@ class _RegistroState extends State<registro> {
     );
   }
 }
-

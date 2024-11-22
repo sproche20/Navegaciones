@@ -1,5 +1,4 @@
-import 'package:navegaciones/pages/login.dart';
-import 'package:navegaciones/pages/programas.dart';
+import 'package:navegaciones/pages/user/login.dart';
 import 'package:navegaciones/rutas.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
