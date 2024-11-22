@@ -184,7 +184,7 @@ class _AddservicesState extends State<Addservices> {
             setState(() {
               servicios.add(servicio);
             });
-            Navigator.pushNamed(context, '/listAdmin');
+            //Navigator.pushNamed(context, '/listAdmin');
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text('Registro exitoso'),

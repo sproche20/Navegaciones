@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navegaciones/pages/admin/addServices.dart';
 import 'package:navegaciones/pages/servicioTecnico_Admin.dart';
 
 class PaginaInicioA extends StatelessWidget {
@@ -41,7 +42,7 @@ class PaginaInicioA extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ServicioTAdmin()),
+                      MaterialPageRoute(builder: (context) => Addservices()),
                     );
                   },
                   icon: const Icon(Icons.add,
