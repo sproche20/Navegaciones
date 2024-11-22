@@ -25,6 +25,8 @@ class _LoginPageState extends State<LoginPage> {
         _claveController.text,
          context,
       );
+      _emailController.clear();
+      _claveController.clear();
     }
   }
       // Mostrar un diálogo de confirmación
