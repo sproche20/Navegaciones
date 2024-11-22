@@ -41,8 +41,8 @@ class inputs {
           border: InputBorder.none,
         ),
         validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'Por favor ingrese una contraseña';
+          if (value == null || value.isEmpty || value.length>=7) {
+            return 'Por favor ingrese una contraseña min con 7 caracteres';
           }
           return null;
         },

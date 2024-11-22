@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:navegaciones/databases/Login_Firebase.dart';
 import 'package:navegaciones/pages/inicio.dart';
+import 'package:navegaciones/pages/servicioTecnico_Admin.dart';
+import 'package:navegaciones/pages/usuario.dart';
 
 class LoginPage extends StatefulWidget {
   @override

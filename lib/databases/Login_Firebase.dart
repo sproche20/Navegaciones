@@ -2,6 +2,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:navegaciones/pages/inicio.dart';
+import 'package:navegaciones/pages/servicioTecnico_Admin.dart';
+import 'package:navegaciones/pages/usuario.dart';
 
 class Login {  
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -38,10 +40,17 @@ class Login {
             onPressed: () {
               Navigator.of(context).pop();  // Cierra el diálogo
               // Redirige a la página de inicio o cualquier otra página después del login
-              Navigator.pushReplacement(
+               if (email == 'softech@gmail.com') {
+                Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Inicio()), // Redirige a la página de inicio
+                MaterialPageRoute(builder: (context) =>  ServicioTAdmin()),
               );
+               }else{
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const PaginaUsuario()),
+              );
+               }
             },
             child: const Text('Aceptar'),
           ),

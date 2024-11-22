@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:navegaciones/databases/Login_Firebase.dart';
 import 'package:navegaciones/pages/programas.dart';
+import 'package:navegaciones/pages/usuario.dart';
 import 'package:navegaciones/rutas.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -79,7 +80,7 @@ class _RegistroState extends State<registro> {
                 Navigator.of(context).pop(); // Cierra el diálogo
                Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Inicio()),
+                MaterialPageRoute(builder: (context) => const PaginaUsuario()),
               );
                
               },
