@@ -2,6 +2,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:navegaciones/pages/inicio.dart';
+import 'package:navegaciones/pages/paginaIAdministrativa.dart';
 import 'package:navegaciones/pages/servicioTecnico_Admin.dart';
 import 'package:navegaciones/pages/usuario.dart';
 
@@ -43,7 +44,7 @@ class Login {
                if (email == 'softech@gmail.com') {
                 Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>  ServicioTAdmin()),
+                MaterialPageRoute(builder: (context) =>  PaginaInicioA()),
               );
                }else{
                 Navigator.push(
