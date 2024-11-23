@@ -41,8 +41,16 @@ class _AddservicesState extends State<Addservices> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: Text('registro servicios'),
+        title: const Text(
+          'Formulario Servicio',
+          style: TextStyle(
+            color: Colors.white, // Cambia el color del texto a blanco
+            fontWeight: FontWeight.bold, // Hace el texto más grueso
+            fontSize:
+                24, // Tamaño del texto (opcional, ajusta según tu preferencia)
+          ),
+        ),
+        backgroundColor: Colors.blue,
       ),
       body: SingleChildScrollView(
         child: Form(
